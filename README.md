@@ -1,8 +1,9 @@
-当然，下面是一个简单的README文件，说明如何使用Python开发一个Telegram机器人：
+下面是一个简单的README文件，说明如何使用Python开发一个Telegram机器人：
 
 # Telegram 机器人开发
 
 这是一个用Python编写的Telegram机器人
+
 v1.0：用于回复今天天气情况。
 
 ## 使用前准备

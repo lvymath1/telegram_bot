@@ -1,2 +1,3 @@
 /config.py
 /bot/weather/utils/const_value.py
+/bot/openai_gpt/utils/const_value.py

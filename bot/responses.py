@@ -1,5 +1,6 @@
 import re
 
+from bot.openai_gpt.gpt import gpt_answer_questions
 from bot.weather.weather_api import get_weather_info
 
 
@@ -36,7 +37,15 @@ def handle_response(text):
         else:
             return '抱歉，我无法识别你提供的城市名称。'
 
-    return '抱歉，我不理解你说的是什么...'
+    if text:
+        return gpt_answer_questions(text)
+    return '抱歉，我无法识别你提供的语言。'
+
+def extract_gpt_msg(text):
+    match = re.search(r'(?<=gpt)\s*[\u4e00-\u9fa5]+', text)
+    if match:
+        return match.group(0).strip()  # 去除可能的前后空格
+    return None
 
 def extract_city_name(text):
     match = re.search(r'[\u4e00-\u9fa5]+(?=天气)', text)
@@ -44,4 +53,5 @@ def extract_city_name(text):
         return match.group(0)
     return None
 
+print(handle_response("gpt你好呀"))
 
