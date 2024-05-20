@@ -19,10 +19,10 @@ def handle_response(text):
     if processed in ('hello', 'hi'):
         return '嗨，你好！'
 
-    if 'how are you' in processed:
+    if 'How are you' in processed:
         return '我很好，谢谢你。'
 
-    if 'i love python' in processed:
+    if 'I love python' in processed:
         return '记得订阅！'
 
     if '天气' in processed:
@@ -39,9 +39,9 @@ def handle_response(text):
     return '抱歉，我不理解你说的是什么...'
 
 def extract_city_name(text):
-    match = re.search(r'天气\s*(\S+)', text)
+    match = re.search(r'[\u4e00-\u9fa5]+(?=天气)', text)
     if match:
-        return match.group(1)
+        return match.group(0)
     return None
 
 

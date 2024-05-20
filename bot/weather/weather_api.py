@@ -1,5 +1,5 @@
 import requests
-from utils.const_value import API, KEY, UNIT, LANGUAGE
+from .utils.const_value import API, KEY, UNIT, LANGUAGE
 
 
 def get_weather_info(city):
@@ -27,3 +27,4 @@ def fetchWeather(location):
     weather_info = f"{location_name}的天气是{weather_text}天，当前气温为{temperature}摄氏度。"
 
     return weather_info
+
