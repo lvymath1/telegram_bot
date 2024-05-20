@@ -11,7 +11,7 @@ def get_weather_info(city):
         weather_info = fetch_weather(location_data, location_key)
         return weather_info
     else:
-        return "无法获取该城市温度"
+        return "无法获取该地区温度"
 
 def get_city_location_key(city):
     api_keys = [KEY1, KEY2]
@@ -52,7 +52,7 @@ def fetch_weather(location_data, location_key):
         air_pollen = weather_data['DailyForecasts'][0]['AirAndPollen'][0]['Value']
 
 
-        weather_str = f"{city_localized_name}{localized_name}明天的天气为{icon_phrase}，最高温度{max_temp}℃，" \
+        weather_str = f"{city_localized_name}{localized_name}今天的天气为{icon_phrase}，最高温度{max_temp}℃，" \
                       f"最低温度{min_temp}℃, 体感温度{feel_temperature}, 空气质量为{air_pollen}。"
         return weather_str
-    return "无法获取该城市温度"
+    return "无法获取该地区温度"
