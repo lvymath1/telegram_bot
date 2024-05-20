@@ -1,5 +1,8 @@
 import re
 
+from bot.weather.weather_api import get_weather_info
+
+
 async def handle_message(update, context):
     message_type = update.message.chat.type
     text = update.message.text
