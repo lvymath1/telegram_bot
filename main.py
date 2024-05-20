@@ -1,7 +1,7 @@
 from typing import Final
 from config import TOKEN
 
-from bot.commands import start_command, help_command, custom_command
+from bot.commands import start, help, custom
 from telegram.ext import Application, CommandHandler, MessageHandler
 
 from bot.error import error
@@ -16,9 +16,9 @@ if __name__ == '__main__':
     app = Application.builder().token(TOKEN).build()
 
     # Commands
-    app.add_handler(CommandHandler('start', start_command))
-    app.add_handler(CommandHandler('help', help_command))
-    app.add_handler(CommandHandler('custom', custom_command))
+    app.add_handler(CommandHandler('start', start))
+    app.add_handler(CommandHandler('help', help))
+    app.add_handler(CommandHandler('custom', custom))
 
     # Message
     app.add_handler(MessageHandler(text_filter, handle_message))
