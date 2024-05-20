@@ -30,7 +30,6 @@ def get_city_location_key(city):
     return None, None
 
 def fetch_weather(location_data, location_key):
-    print(location_data)
     api_keys = [KEY1, KEY2]
     for KEY in api_keys:
         response = requests.get(API + location_key, params={
