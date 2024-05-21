@@ -1,12 +1,12 @@
 
-<span style="font-size:20px; font-weight:bold;"> 下面是一个简单的README文件，说明如何使用Python开发一个Telegram机器人</span>
-
 # Telegram 机器人开发
 
-这是一个用Python编写的Telegram机器人
+这是一个用 Python 编写的 Telegram 机器人。
 
-v1.0：用于回复今天天气情况。
-v1.1：回复壁纸可以返回今天的必应壁纸，且加入了gpt3.5接口功能。
+## 功能特性
+
+- **v1.0**：用于回复今天天气情况。
+- **v1.1**：回复“壁纸”可以返回今天的必应壁纸，并且加入了 GPT-3.5 接口功能。
 
 ## 使用前准备
 
