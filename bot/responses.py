@@ -1,5 +1,6 @@
 import re
 
+from bot.dog_dairy.dog_dairy import dog_dairy
 from bot.openai_gpt.gpt import gpt_answer_questions
 from bot.weather.weather_api import get_weather_info
 
@@ -25,6 +26,13 @@ def handle_response(text):
 
     if 'I love python' in processed:
         return '记得订阅！'
+
+    if '舔狗日记' in processed:
+        dog_dairy_answer = dog_dairy()
+        if dog_dairy_answer:
+            return dog_dairy_answer
+        else:
+            return '抱歉，我无法返回添狗日记。'
 
     if '天气' in processed:
         city = extract_city_name(text)
@@ -52,6 +60,4 @@ def extract_city_name(text):
     if match:
         return match.group(0)
     return None
-
-print(handle_response("gpt你好呀"))
 

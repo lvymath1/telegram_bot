@@ -5,7 +5,7 @@ from bot.openai_gpt.utils.const_value import API_key
 client = OpenAI(
     # defaults to os.environ.get("OPENAI_API_KEY")
     api_key=API_key,
-    base_url="https://api.chatanywhere.tech/v1"
+    base_url="https://api.chatanywhere.com.cn"
 )
 
 # 非流式响应
