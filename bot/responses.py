@@ -1,5 +1,7 @@
+import os
 import re
 
+from bot.bing_daily.bing_daily import bing_daily
 from bot.dog_dairy.dog_dairy import dog_dairy
 from bot.openai_gpt.gpt import gpt_answer_questions
 from bot.weather.weather_api import get_weather_info
@@ -12,8 +14,21 @@ async def handle_message(update, context):
     print(f'User ({update.message.chat.id}) said in {message_type}: "{text}"')
 
     response = handle_response(text)
-    print('Bot:', response)
-    await update.message.reply_text(response)
+
+    # Check if the response is a text or an image
+    if isinstance(response, tuple):
+        image_path, image_title = response
+        if os.path.exists(image_path):
+            print('Bot: Sent an image response')
+            with open(image_path, 'rb') as image_file:
+                await context.bot.send_photo(chat_id=update.message.chat.id, photo=image_file, caption=image_title)
+        else:
+            print('Bot: Image file not found')
+            await update.message.reply_text("抱歉，Lisa找不到壁纸了，请稍后再试")
+    else:
+        print('Bot:', response)
+        await update.message.reply_text(response)
+
 
 def handle_response(text):
     processed = text.lower()
@@ -27,12 +42,16 @@ def handle_response(text):
     if 'I love python' in processed:
         return '记得订阅！'
 
-    if '舔狗日记' in processed:
-        dog_dairy_answer = dog_dairy()
-        if dog_dairy_answer:
-            return dog_dairy_answer
-        else:
-            return '抱歉，我无法返回添狗日记。'
+    if '壁纸' in processed:
+        return bing_daily()
+
+    # 服务器无法加入此功能
+    # if '舔狗日记' in processed:
+    #     dog_dairy_answer = dog_dairy()
+    #     if dog_dairy_answer:
+    #         return dog_dairy_answer
+    #     else:
+    #         return '抱歉，我无法返回添狗日记。'
 
     if '天气' in processed:
         city = extract_city_name(text)
